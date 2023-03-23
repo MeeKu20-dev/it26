@@ -15,14 +15,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 				$user_data = mysqli_fetch_assoc($result);
 				if($user_data['password'] === $password) {
 					$_SESSION['user_id'] = $user_data['user_id'];
-					header("Location: index.php");
+					echo '<script>alert("Logged In")</script>';
 					die;
 				}
 			}
 		}
-		echo "Invalid Credentials!";
+		echo '<script>alert("Invalid Credentials!")</script>';
 	} else {
-		echo "Please Enter some Valid Information!";
+		echo '<script>alert("Please Enter some Valid Information!")</script>';
 	}
 }
 ?>
