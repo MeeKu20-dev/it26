@@ -11,7 +11,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="patient.css">
+    <link rel="stylesheet" href="doctor.css?v=<?php echo time(); ?>">
     <title>Document</title>
   </head>
   <body>
@@ -28,7 +28,7 @@
           </li>
 
           <li id="dashboard">
-            <a href="adminMain.html">
+            <a href="adminMain.php">
               <span class="icon">
                 <i class="fa-solid fa-house"></i>
               </span>
@@ -37,7 +37,7 @@
           </li>
 
           <li>
-            <a href="patient.html">
+            <a href="patient.php">
               <span class="icon">
                 <i class="fa-solid fa-hospital-user"></i>
               </span>
@@ -46,7 +46,7 @@
           </li>
 
           <li>
-            <a href="doctor.html">
+            <a href="doctor.php">
               <span class="icon">
                 <i class="fa-solid fa-user-doctor"></i>
               </span>
@@ -55,7 +55,16 @@
           </li>
 
           <li>
-            <a href="addRecords.html">
+          <a href="medicine.php">
+            <span class="icon">
+              <i class="fa-solid fa-tablets"></i>
+            </span>
+            <span class="title">Medicine</span>
+          </a>
+        </li>
+
+          <li>
+            <a href="addRecords.php">
               <span class="icon">
                 <i class="fa-solid fa-user-plus"></i>
               </span>
@@ -64,7 +73,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="manageRecords.php">
               <span class="icon">
                 <i class="fa-solid fa-pen-to-square"></i>
               </span>
@@ -83,70 +92,43 @@
 
             <div class="search">
                 <label>
-                    <input type="text" placeholder="Search Patient ID">
+                    <input type="text" placeholder="Search Doctor">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </label>
             </div>
         </div>
 
         <div class="details">
-            <div class="patient">
+            <div class="doctor">
                 <div class="cardHeader">
-                    <h2>Patient's Information   </h2>
+                    <h2>Doctor's Information</h2>
                     <a href="#" class="btn">View All</a>
                 </div>
-            
-    
-                <table>
-                    <thead>
-                        <tr>
-                            <td>PatientID</td>
-                            <td>Last name</td>
-                            <td>First Name</td>
-                            <td>Middle Name</td>
-                            <td>Gender</td>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>PatientID</td>
-                            <td>Last name</td>
-                            <td>First Name</td>
-                            <td>Middle Name</td>
-                            <td>Gender</td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <td>PatientID</td>
-                            <td>Last name</td>
-                            <td>First Name</td>
-                            <td>Middle Name</td>
-                            <td>Gender</td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <td>PatientID</td>
-                            <td>Last name</td>
-                            <td>First Name</td>
-                            <td>Middle Name</td>
-                            <td>Gender</td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr>
-                            <td>PatientID</td>
-                            <td>Last name</td>
-                            <td>First Name</td>
-                            <td>Middle Name</td>
-                            <td>Gender</td>
-                        </tr>
-                    </tbody>
+                <table class="table table-striped table-bordered table-hover">
+                  <thead>
+                    <th>Doctor ID</th>
+                    <th>Fullname</th>
+                    <th>Gender</th>
+                    <th>Specialization</th>
+                  </thead>
+                  <tbody>
+                  <?php
+                    include("database.php");
+                    include("functions.php");
+                    
+                    $query=mysqli_query($con,"select * from `doctor`");
+                    while($row=mysqli_fetch_array($query)){
+                      ?>
+                      <tr>
+                        <td><?php echo ucwords($row['doctorID']); ?></td>
+                        <td><?php echo ucwords($row['fullname']); ?></td>
+                        <td><?php echo $row['gender']; ?></td>
+                        <td><?php echo ucwords($row['specialization']); ?></td>
+                      </tr>
+                      <?php
+                    }
+                  ?>
+                  </tbody>
                 </table>
             </div>
       </div>

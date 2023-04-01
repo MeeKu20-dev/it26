@@ -6,7 +6,6 @@
 }
 
 body {
-  height: 100vh ;
   background-image: url(back-image.jpeg);
   background-size: cover;
   background-position: center;
@@ -39,6 +38,7 @@ a {
     position: relative;
     background-color: #FFF;
     padding: 20px 0;
+    opacity: 0.9;
   }
 
 .logo-name {
@@ -155,6 +155,7 @@ a {
 .banner p {
   font-size: 20px;
   padding-bottom: 30px;
+  text-align: justify;
 }
 
 .learn-more {
