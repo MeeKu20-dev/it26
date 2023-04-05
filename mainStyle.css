@@ -1,45 +1,33 @@
 * {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  
-}
-
-body {
-  background-image: url(back-image.jpeg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
 }
 
 .logo {
-  width: 80px;
+  width: 60px;
 }
-
 
 li {
   list-style: none;
-  
 }
 
 a {
   text-decoration: none;
-  color: #000000;
+  color: #fff;
   font-size: 1.5rem;
-  
 }
 
-.links a:hover{
+.links a:hover {
   color: rgb(53, 135, 151);
 }
 
-  header {
-    position: relative;
-    background-color: #FFF;
-    padding: 20px 0;
-    opacity: 0.9;
-  }
+header {
+  position: sticky;
+  top: 0;
+  background-color: #2e2185;
+  padding: 10px 0;
+}
 
 .logo-name {
   display: flex;
@@ -48,31 +36,38 @@ a {
 
 .logo-name h2 {
   color: #000000;
-  font-size: 30px;
+  font-size: 20px;
+  color: #fff;
 }
 
 .navbar {
-    width: 100%;
-    height: 60px;
-    max-width: 1500px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  max-width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar .links {
   display: flex;
   gap: 2rem;
-
 }
 
 .links a {
-  font-size: 25px;
+  font-size: 20px;
+}
+
+.navbar .nav-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .bar-btn {
-  color:#000000;
+  color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
   justify-content: right;
@@ -82,103 +77,138 @@ a {
   padding-right: 20px;
 }
 
-.login-btn {
-  background-color: rgb(53, 135, 151);
-  color: #FFF;
-  padding:1rem 2rem;
+.btn {
+  background-color:blue;
+  color: #fff;
+  padding: 10px;
   border: none;
+
   outline: none;
-  font-size: 1.2rem;
-  width:200px;
+  font-size: 15px;
+  width: 100px;
   display: flex;
   justify-content: center;
 }
 
-.login-btn:hover {
-  background-color: rgb(132, 200, 213); ;
+.btn:hover {
+  background-color: #5cb4ea;
 }
 
 .drop-down {
   display: none;
   position: absolute;
   right: 2rem;
-  top:60px;
+  top: 60px;
   height: 0;
   width: 300px;
   background: rgba(232, 236, 236, 0.53);
   backdrop-filter: blur(15px);
   border-radius: 10px;
   overflow: hidden;
-  transition: height .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.drop-down.open{
-  height: 200px;
+.drop-down.open {
+  height: 205px;
+  background-color: #2e2185;
 }
 .drop-down li {
   padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
 }
 
 .drop-down .login {
-  width: 70%;
+  width: 50%;
   display: flex;
   justify-content: center;
-  background-color:rgba(97, 109, 113, 0.851);
-  color: #FFF;
-  padding:0.5rem 1.5rem;
+  background-color: #fff;
+  color: rgb(38, 38, 38);
+  padding: 0.5rem 1.5rem;
   border: none;
   outline: none;
   border-radius: 20px;
 }
 
 .drop-down .login:hover {
-  background-color:rgb(53, 135, 151); ;
+  background-color: #5cb4ea;
 }
 .drop-down a {
   font-size: 20px;
+  color: white;
 }
-
 
 .banner {
   display: flex;
   align-items: right;
-  margin: 80px 80px;
+  padding: 80px 70px;
+  background: url("background.jpeg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-.banner h1{
+.banner span {
+  color: #2e2185;
+}
+
+.banner h1 {
   font-size: 100px;
+  color: rgb(38, 38, 38);
 }
 
 .banner p {
   font-size: 20px;
   padding-bottom: 30px;
   text-align: justify;
+  width: 52%;
 }
 
 .learn-more {
-  background-color: rgb(53, 135, 151);
-  color: #FFF;
-  padding:1rem 2rem;
+  background-color: #2e2185;
+  color: #fff;
+  padding: 1rem 2rem;
   border: none;
   outline: none;
   font-size: 1.2rem;
-  width:20%;
+  width: 20%;
   display: flex;
   justify-content: center;
 }
 
 .learn-more:hover {
-  background-color: rgb(132, 200, 213);
+  background-color: #5cb4ea;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  padding: 80px 80px;
+}
+
+.about-text h1 {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.about-text p {
+  display: flex;
+  justify-content: right;
+  text-align: justify;
 }
 
 
-@media(max-width:1050px) {
+
+
+
+
+@media (max-width: 1050px) {
   .navbar .links,
-  .navbar .login-btn {
-    display:none;
+  .navbar .btn {
+    display: none;
   }
 
   .navbar .bar-btn {
@@ -187,27 +217,33 @@ a {
 
   .drop-down {
     display: block;
-    
   }
-  
+
 }
 
-@media(max-width:882px) {
+@media (max-width: 882px) {
   .banner h1 {
     font-size: 50px;
+  }
+
+  .banner p {
+    width: 100%;
   }
   .learn-more {
     width: 200px;
   }
+
+
 }
 
-@media(max-width:520px) {
+@media (max-width: 520px) {
   .drop-down {
     left: 2rem;
     width: unset;
   }
 
   .learn-more {
-    width: 200px
+    width: 200px;
   }
+
 }

@@ -3,7 +3,7 @@ body {
     padding: 0;
     font-family: 'Montserrat', sans-serif;
     background-color: #f2f2f2;
-    background: url('back-image.jpeg') no-repeat center center fixed;
+    background: url('background.jpeg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     display: flex;

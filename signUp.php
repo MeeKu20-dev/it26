@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap"
     />
-    <link rel="stylesheet" href="signUp.css">
+    <link rel="stylesheet" href="signUp.css?v=<?php echo time(); ?>">
     <title>Sign Up</title>
 </head>
 <body>
@@ -41,7 +41,7 @@
 			<option value="other">Other</option>
 		</select>
 		
-		<a href="login.html"><input  type="button" value="Cancel"></a>
+		<a href="login.php"><input  type="button" value="Cancel"></a>
         <input type="submit" value="Sign Up">
 	</form>
 

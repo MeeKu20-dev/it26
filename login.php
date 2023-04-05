@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap"
     />
-    <link rel="stylesheet" href="loginCss.css" />
+    <link rel="stylesheet" href="loginCss.css?v=<?php echo time(); ?>">
   </head>
   <body>
 
@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         	<label for="password">Password:</label>
         	<input type="password" id="password" name="password" required />
         	<input type="submit" value="Login" />
-        	<input type="button" value="Sign Up" />
+        	<a href="signUp.php"><input type="button" value="Sign Up" /></a>
       	</form>
 	</div>
 
