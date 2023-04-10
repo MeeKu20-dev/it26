@@ -59,15 +59,15 @@
 					<div class="title">Personal Details</div>
 					<div class="field">
 						<div class="label">Last Name:</div>
-						<input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
+						<input type="text" placeholder="Enter last name" name="lname" id="lname" required>
 					</div>
 					<div class="field">
 						<div class="label">First Name:</div>
-						<input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
+						<input type="text" placeholder="Enter first name" name="fname" id="fname" required>
 					</div>
 					<div class="field">
 						<div class="label">Middle Initial:</div>
-						<input type="text" placeholder="Enter Middle Name" name="mid-init" id="mid-init" required>
+						<input type="text" placeholder="Enter middle name" maxlength="1"  name="mid-init" id="mid-init" required>
 					</div>
 					<div class="field nextBtn">
 						<button>Next</button>
@@ -78,15 +78,15 @@
 					<div class="title">Personal Details</div>
 					<div class="field">
 						<div class="label">Age:</div>
-						<input type="number">
+						<input type="number" maxlength="3" placeholder="Enter age" name="age" id="age" required>
 					</div>
 					<div class="field">
 						<div class="label">Birth Date:</div>
-						<input type="date">
+						<input type="date" name="bdate" id="bdate" required>
 					</div>
 					<div class="field">
 						<div class="label">Gender:</div>
-						<select name="gender" id="gender">
+						<select name="gender" id="gender" required>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 							<option value="other">Others</option>
@@ -94,7 +94,7 @@
 					</div>
 					<div class="field">
 						<div class="label">Blood Type:</div>
-						<select id="blood-type" name="blood-type">
+						<select id="blood-type" name="blood-type" required>
 							<option value="">--Please select--</option>
 							<option value="A+">A+</option>
 							<option value="A-">A-</option>
@@ -116,15 +116,15 @@
 					<div class="title">Personal Details</div>
 					<div class="field">
 						<div class="label">Full Address:</div>
-						<input type="text">
+						<input type="text" placeholder="Enter full address" name="address" id="address">
 					</div>
 					<div class="field">
 						<div class="label">Email Address:</div>
-						<input type="text">
+						<input type="text" placeholder="Enter email address" name="e-mail" id="e-mail">
 					</div>
 					<div class="field">
-						<div class="label">Contact Number:</div>
-						<input type="text">
+						<div class="label">Phone Number:</div>
+						<input type="number" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="11" name="contact" id="contact">
 					</div>
 					<div class="field btns">
 						<button class="prev-2 prev">Previous</button>
@@ -137,20 +137,20 @@
 					<div class="title">Emergency Contact</div>
 					<div class="field">
 						<div class="label">Full Name:</div>
-						<input type="text">
+						<input type="text" placeholder="Enter full name" name="e-fullname" id="e-fullname">
 					</div>
 					<div class="field">
 						<div class="label">Email Address:</div>
-						<input type="text">
+						<input type="text" placeholder="Enter email address" name="email-add" id="email-add">
 					</div>
 					<div class="field">
-						<div class="label">Contact Number:</div>
-						<input type="text">
+						<div class="label">Phone Number:</div>
+						<input type="number" oninput="this.value=this.value.slice(0,this.maxLength)" maxlength="11" name="phone-num" id="phone-num" >
 					</div>
 
 					<div class="field">
 						<div class="label">Relationship:</div>
-						<input type="text">
+						<input type="text" placeholder="Enter relationship" name="relationship" id="relationship">
 					</div>
 					<div class="field btns">
 						<button class="prev-3 prev">Previous</button>
@@ -162,15 +162,15 @@
 					<div class="title">Create Account</div>
 					<div class="field">
 						<div class="label">Username:</div>
-						<input type="text">
+						<input type="text" placeholder="Enter username"name="username" id="username">
 					</div>
 					<div class="field">
 						<div class="label">Password:</div>
-						<input type="text">
+						<input type="password" placeholder="Enter password" name="password" id="password">
 					</div>
 					<div class="field">
 						<div class="label">Confirm Password:</div>
-						<input type="text">
+						<input type="text" name="confirm-pass" id="confirm-pass">
 					</div>
 					<div class="field btns">
 						<button class="prev-4 prev">Previous</button>
