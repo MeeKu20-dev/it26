@@ -36,13 +36,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap"
     />
-    <link rel="stylesheet" href="loginCss.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="styles/loginCss.css?v=<?php echo time(); ?>">
   </head>
   <body>
 
 	<div class="container">
 		<div class="logo-name">
-			<img class="logo"src="logo.ico">	
+			<img class="logo"src="images/logo.ico">	
 			<h1>St. Kerby Hospital </h1>
 		</div>
 		

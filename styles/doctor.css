@@ -155,8 +155,6 @@
     justify-content: flex-start;
     align-items: center;
     padding: 0 10px;
-  
-
   }
   
   .toggle {
@@ -168,8 +166,9 @@
     align-items: center;
     font-size: 2.5rem;
     cursor: pointer;
+    color: var(--black1 );
   }
-  
+
   .search {
     position: relative;
     width: 400px;
@@ -198,150 +197,21 @@
     font-size: 1.2rem;
   }
 
-  .cardBox {
-    position: relative;
-    width: 100%;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
-  }
-  
-  .cardBox .card {
-    position: relative;
-    background: var(--white);
-    padding: 30px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    width: 350px;
-  }
-  
-  .cardBox .card .numbers {
-    position: relative;
-    font-weight: 500;
-    font-size: 2.5rem;
-    color: var(--blue);
-  }
-  
-  .cardBox .card .cardName {
-    color: var(--black2);
-    font-size: 1.1rem;
-    margin-top: 5px;
-  }
-  
-  .cardBox .card .iconBx {
-    font-size: 3.5rem;
-    color: var(--black2);
-  }
-  
-  .cardBox .card:hover {
-    background: var(--blue);
-  }
-  .cardBox .card:hover .numbers,
-  .cardBox .card:hover .cardName,
-  .cardBox .card:hover .iconBx {
-    color: var(--white);
-  }
-
-  .date {
-    position:relative;
-    top:8px
-  }
-
   .details {
     position: relative;
     width: 100%;
     padding: 20px;
-    display: grid;
-    grid-gap: 10px;
     margin-top: 10px;
   }
 
-  .details .admission {
+  .details .doctor {
     position: relative;
     display: grid;
     background: var(--white);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    max-height: 400px;
-    overflow-y: scroll;  
-  }
-
-  .searchAD {
-    position: relative;
-    width: 400px;
-    margin: 0 10px;
-  }
-  
-  .searchAD label {
-    position: relative;
-    width: 100%;
-  }
-  
-  .searchAD label input {
-
-    height: 30px;
-    border-radius: 40px;
-    padding: 5px 20px;
-    padding-left: 35px;
-  
-    outline: none;
-  }
-  
-  .prescription label i {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 1.2rem;
-  }
-
-  .searchPresc {
-    position: relative;
-    width: 400px;
-    margin: 0 10px;
-  }
-  
-  .prescription label {
-    position: relative;
-    width: 100%;
-  }
-  
-  .prescription label input {
-
-    height: 30px;
-    width: 50%;
-    border-radius: 40px;
-    padding: 5px 20px;
-    padding-left: 35px;
-  
-    outline: none;
-  }
-  
-  .searchPresc label i {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 1.2rem;
-  }
-
-  .admission input {
-    
-    width: 50%;
-    height: 20px;
-    border-radius: 40px;
-    padding: 5px 10px;
-    padding-left: 35px;
-    outline: none;
-  }
-
-  .admission label i {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 1.2rem;
+    max-height: 500px;
+    overflow-y: scroll;
   }
 
   .details .cardHeader {
@@ -350,19 +220,20 @@
     align-items: flex-start;
     position: sticky;
     top:0;
-    background: white;
+    background: #2e2185;
     padding: 20px;
   }
+
   .cardHeader h2 {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--white);
   }
   .cardHeader .btn {
     position: relative;
     padding: 5px 10px;
-    background: var(--blue);
+    background: #f5f5f5;
     text-decoration: none;
-    color: var(--white);
+    color: var(--black1);
     border-radius: 6px;
   }
   
@@ -371,199 +242,36 @@
     border-collapse: collapse;
     margin-top: 10px;
   }
-
-  .details table thead th {
-    position: sticky;
-    top:60px;
-    background: white;
-  }
-
   .details table thead td {
     font-weight: 600;
   }
-  .details .admission table tr {
+  .details .doctor table tr {
     color: var(--black1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   
   }
-  .details .admission table tr:last-child {
+  .details .doctor table tr:last-child {
     border-bottom: none;
   }
- 
-  .details .admission table tr td {
+  .details .doctor table tbody tr:hover {
+    background: var(--blue);
+    color: var(--white);
+  }
+  .details .doctor table tr td {
     padding: 10px;
     text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
-  .details .admission table tr td:last-child {
+  .details .doctor table tr td:last-child {
     text-align: center;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
-  .details .admission table tr td:nth-child(2) {
+  .details .doctor table tr td:nth-child(2) {
     text-align: center;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
-  .details .admission table tr td:nth-child(3) {
+  .details .doctor table tr td:nth-child(3) {
     text-align: center;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
-
-  .details .prescription {
-    position: relative;
-    display: grid;
-    background: var(--white);
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-    max-height: 400px;
-    overflow-y: scroll; 
-  }
-  
-  .details table thead td {
-    font-weight: 600;
-  }
-  .details .prescription table tr {
-    color: var(--black1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   
-  }
-  .details .prescription table tr:last-child {
-    border-bottom: none;
-  }
-
-  .details .prescription table tr td {
-    padding: 10px;
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .details .prescription table tr td:last-child {
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .details .prescription table tr td:nth-child(2) {
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .details .prescription table tr td:nth-child(3) {
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .details .admission table tr td button {
-    text-decoration: none;
-    padding: 10px;
-  }    
-
-.edit-button,
-.delete-button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.edit-button {
-  background-color: #2196F3;
-}
-
-.delete-button {
-  background-color: #f44336;
-}
-
-.edit-button:hover {
-  background-color: #0b7dda;
-}
-
-.delete-button:hover {
-  background-color: #e53935;
-}
-
-.fa {
-  margin-right: 5px;
-}
-
-
-  .details .prescription table tr td button  {
-    text-decoration: none;
-    padding: 10px;
-  }
-
-  .details .patients {
-    position: relative;
-    display: grid;
-    background: var(--white);
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-    max-height: 400px;
-    overflow-y: scroll; 
-  }
-  
-  .details table thead td {
-    font-weight: 600;
-  }
-  .details .patients table tr {
-    color: var(--black1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   
-  }
-  .details .patients table tr:last-child {
-    border-bottom: none;
-  }
-  
-  .details .patients table tr td {
-    padding: 10px;
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .details .patients table tr td:last-child {
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .details .patients table tr td:nth-child(2) {
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .details .patients table tr td:nth-child(3) {
-    text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .details .patients table tr td button  {
-    text-decoration: none;
-    padding: 10px;
-  }
-
-  .searchPat {
-    position: relative;
-    width: 400px;
-    margin: 0 10px;
-  }
-  
-  .searchPat label {
-    position: relative;
-    width: 100%;
-  }
-  
-  .searchPat label input {
-
-    height: 30px;
-    border-radius: 40px;
-    padding: 5px 20px;
-    padding-left: 35px;
-    width: 50%;
-    outline: none;
-  }
-
-  .searchPat label i {
-    position: absolute;
-    top: 0;
-    left: 10px;
-    font-size: 1.2rem;
-  }
-  
-
 
   
 

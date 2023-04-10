@@ -1,7 +1,9 @@
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 .logo {
@@ -144,7 +146,7 @@ header {
   display: flex;
   align-items: right;
   padding: 80px 70px;
-  background: url("background.jpeg") no-repeat center center fixed;
+  background-image: url("https://wp02-media.cdn.ihealthspot.com/wp-content/uploads/sites/201/2021/03/08004925/iStock-1072286960.jpg");
   background-size: cover;
 }
 

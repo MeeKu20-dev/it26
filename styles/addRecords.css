@@ -185,20 +185,22 @@
     background: var(--white);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
-    max-height: 500px;
-    padding: 20px;
+    
   }
 
   .details .cardHeader {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 10px;
+    align-items: center;
+    position: sticky;
+    top:0;
+    background: #2e2185;
+    padding: 20px;
   }
 
   .cardHeader h2 {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--white);
   }
 
 .newAdm {
@@ -207,7 +209,7 @@
   font-weight: bold;
 }
 .newAdm form {
-  padding-bottom: 20px;
+  padding: 20px;
 }
 
 .newAdm label {
@@ -254,17 +256,15 @@
   background: var(--white);
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-  max-height: 300px;
-  padding: 20px;
+  max-height: 350px;
 }
 
 .newPresc {
 display: flex;
-margin-bottom: 5px;
 font-weight: bold;
 }
-.newPresc {
-padding-bottom: 20px;
+.newPresc form {
+padding: 20px;
 }
 
 .newPresc label {

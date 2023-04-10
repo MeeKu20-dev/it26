@@ -1,8 +1,11 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background: url('background.jpeg') no-repeat center center fixed;
+    background: url("https://wp02-media.cdn.ihealthspot.com/wp-content/uploads/sites/201/2021/03/08004925/iStock-1072286960.jpg") no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     display: flex;

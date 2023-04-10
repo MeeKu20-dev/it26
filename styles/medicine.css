@@ -222,20 +222,20 @@
     align-items: flex-start;
     position: sticky;
     top:0;
-    background: white;
+    background: #2e2185;
     padding: 20px;
   }
 
   .cardHeader h2 {
     font-weight: 600;
-    color: var(--blue);
+    color: var(--white);
   }
   .cardHeader .btn {
     position: relative;
     padding: 5px 10px;
-    background: var(--blue);
+    background: #f5f5f5;
     text-decoration: none;
-    color: var(--white);
+    color: var(--black1);
     border-radius: 6px;
   }
   
@@ -253,22 +253,9 @@
   .details table thead td {
     font-weight: 600;
   }
-  .details .patient table tr {
-    color: var(--black1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    
-  }
-  .details  .patient table tr:last-child {
-    border-bottom: none;
-  }
-  .details  .patient table tbody tr:hover {
-    background: var(--blue);
-    color: var(--white);
-  }
   .details .patient table tr td {
     padding: 10px;
     text-align: center;
-    border-left: 1px solid rgba(0, 0, 0, 0.1)
     
   }
   .details .patient table tr td:last-child {
@@ -280,6 +267,11 @@
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
   .details .patient table tr td:nth-child(3) {
+    text-align: center;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .details .patient table tr td:nth-child(4) {
     text-align: center;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }

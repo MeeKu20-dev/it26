@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="patient.css?v=<?php echo time(); ?>">
+  <link rel="stylesheet" href="styles/patient.css?v=<?php echo time(); ?>">
   <title>Document</title>
 </head>
 
@@ -17,7 +17,7 @@
         <li>
           <a href="#">
             <span class="logo">
-              <img src="logo.ico" alt="" />
+              <img src=".images/logo.ico" alt="" />
             </span>
             <span class="logo-name">St. Kerby Hospital</span>
           </a>
@@ -99,7 +99,7 @@
     <div class="details">
       <div class="patient">
         <div class="cardHeader">
-          <h2>Patient's Information </h2>
+          <h2>Patient Information </h2>
           <a href="#" class="btn">View All</a>
         </div>
         <table>
@@ -145,7 +145,7 @@
 
   </div>
 
-  <script src="adminMain.js"></script>
+  <script src="styles/adminMain.js"></script>
 </body>
 
 </html>
