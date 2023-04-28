@@ -12,6 +12,7 @@ const progressText = document.querySelectorAll(".step p");
 const progressCheck = document.querySelectorAll(".step .fa-check");
 const bullet = document.querySelectorAll(".step .bullet");
 
+
 let max = 5;
 let current = 1;
 

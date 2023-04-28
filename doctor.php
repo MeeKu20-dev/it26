@@ -17,7 +17,7 @@
         <li>
           <a href="#">
             <span class="logo">
-              <img src="logo.ico" alt="" />
+              <img src="images/logo.ico" alt="" />
             </span>
             <span class="logo-name">St. Kerby Hospital</span>
           </a>

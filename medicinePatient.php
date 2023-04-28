@@ -14,68 +14,50 @@
   <div class="container">
     <div class="navigation">
       <ul>
-        <li>
-          <a href="#">
-            <span class="logo">
-              <img src="images/logo.ico" alt="" />
-            </span>
-            <span class="logo-name">St. Kerby Hospital</span>
-          </a>
-        </li>
+      <li>
+                    <a href="#">
+                        <span class="logo">
+                            <img src="images/logo.ico" alt="" />
+                        </span>
+                        <span class="logo-name">St. Kerby Hospital</span>
+                    </a>
+                </li>
 
-        <li id="dashboard">
-          <a href="adminMain.php">
-            <span class="icon">
-              <i class="fa-solid fa-house"></i>
-            </span>
-            <span class="title">Dashboard</span>
-          </a>
-        </li>
+                <li>
+                    <a href="patientUser.php">
+                        <span class="icon">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                        </span>
+                        <span class="title">Personal Information</span>
+                    </a>
+                </li>
 
-        <li>
-          <a href="patient.php">
-            <span class="icon">
-              <i class="fa-solid fa-hospital-user"></i>
-            </span>
-            <span class="title">Patient</span>
-          </a>
-        </li>
+                <li>
+                    <a href="medicinePatient.php">
+                        <span class="icon">
+                            <i class="fa-solid fa-tablets"></i>
+                        </span>
+                        <span class="title">Medicine</span>
+                    </a>
+                </li>
 
-        <li>
-          <a href="doctor.php">
-            <span class="icon">
-              <i class="fa-solid fa-user-doctor"></i>
-            </span>
-            <span class="title">Doctor</span>
-          </a>
-        </li>
+                <li>
+                    <a href="doctorPatient.php">
+                        <span class="icon">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </span>
+                        <span class="title">Doctor</span>
+                    </a>
+                </li>
 
-        <li>
-          <a href="medicine.php">
-            <span class="icon">
-              <i class="fa-solid fa-tablets"></i>
-            </span>
-            <span class="title">Medicine</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="addRecords.php">
-            <span class="icon">
-              <i class="fa-solid fa-user-plus"></i>
-            </span>
-            <span class="title">Add records</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="manageRecords.php">
-            <span class="icon">
-              <i class="fa-solid fa-pen-to-square"></i>
-            </span>
-            <span class="title">Manage records</span>
-          </a>
-        </li>
+                <li id="dashboard">
+                    <a href="main.php">
+                        <span class="icon">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </span>
+                        <span class="title">Log out</span>
+                    </a>
+                </li>
       </ul>
     </div>
   </div>

@@ -312,8 +312,10 @@
     display: grid;
     background: var(--white);
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    max-height: 640px;
+    max-height: 660px;
+    overflow-y: scroll;
   }
+
 
   
 

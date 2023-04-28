@@ -32,6 +32,24 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="medicinePatient.php">
+                        <span class="icon">
+                            <i class="fa-solid fa-tablets"></i>
+                        </span>
+                        <span class="title">Medicine</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="doctorPatient.php">
+                        <span class="icon">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </span>
+                        <span class="title">Doctor</span>
+                    </a>
+                </li>
+
                 <li id="dashboard">
                     <a href="main.php">
                         <span class="icon">
@@ -138,13 +156,52 @@
                         <h2>MEDICAL HISTORY</h2>
                     </div>
 
-                    <table>
-
+                    <table style="padding-top:20px">
+                        <thead>
+                            <tr>
+                                <th colspan="2" style="text-align:center; background-color:#a6a4a4; color:#000">Admission Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Admission #:</th>
+                                <td>ad001</td>
+                            </tr>
+                            <tr>
+                                <th>Admission Date:</th>
+                                <td>2023-02-01</td>
+                            </tr>
+                            <tr>
+                                <th>Patient ID:</th>
+                                <td>Px10</td>
+                            </tr>
+                            <tr>
+                                <th>Doctor ID:</th>
+                                <td>dd5</td>
+                            </tr>
+                            <tr>
+                                <th>Illness:</th>
+                                <td>Kalibanga</td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" style="text-align:center; background-color: #a6a4a4; color:#000">Prescription</th>
+                            </tr>
+                            <tr>
+                                <th>Med Code:</th>
+                                <td>m001</td>
+                            </tr>
+                            <tr>
+                                <th>Dosage:</th>
+                                <td>3x a day</td>
+                            </tr>
+                        </tbody>
                     </table>
-                </div>
-        </div>
 
-        <script src="styles/adminMain.js"></script>
+
+                </div>
+            </div>
+
+            <script src="styles/adminMain.js"></script>
 </body>
 
 </html>

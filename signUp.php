@@ -59,15 +59,15 @@
 					<div class="title">Personal Details</div>
 					<div class="field">
 						<div class="label">Last Name:</div>
-						<input type="text" placeholder="Enter last name" name="lname" id="lname" required>
+						<input type="text" placeholder="Enter last name" name="lname" id="lname">
 					</div>
 					<div class="field">
 						<div class="label">First Name:</div>
-						<input type="text" placeholder="Enter first name" name="fname" id="fname" required>
+						<input type="text" placeholder="Enter first name" name="fname" id="fname">
 					</div>
 					<div class="field">
 						<div class="label">Middle Initial:</div>
-						<input type="text" placeholder="Enter middle name" maxlength="1"  name="mid-init" id="mid-init" required>
+						<input type="text" placeholder="Enter middle name" maxlength="1"  name="mid-init" id="mid-init">
 					</div>
 					<div class="field nextBtn">
 						<button>Next</button>
