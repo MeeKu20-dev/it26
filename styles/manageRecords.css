@@ -590,9 +590,251 @@
     font-size: 1.2rem;
   }
   
+  .pop-modal {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+  }
 
+  .pop-modal .newAdm {
+    position: relative;
+    display: grid;    
+  }
 
+  .pop-modal .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top:0;
+    background: #2e2185;
+    padding: 20px;
+    color: #fff;
+  }
+
+  .cardHeader h2 {
+    font-weight: 600;
+    color: var(--white);
+  }
+
+.newAdm {
+  display: flex;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.newAdm form {
+  padding: 20px;
+  width: 100%;
+  background:#fff;
+}
+
+.newAdm label {
+  display: flex;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.newAdm  input[type="text"] {
+  width: 70%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.newAdm input[type="date"] {
+  width: 30%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.newAdm select {
+  width: 30%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.newAdm button {
+  margin-right: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.newAdm button[type="reset"] {
+  background: red;
+}
+.newAdm button[type="reset"]:hover {
+  background: rgb(235, 123, 123);
+}
+
+.newAdm button[type="submit"] {
+  background: green;
+}
+.newAdm button[type="submit"]:hover {
+  background: rgb(94, 203, 94);
+}
+.newAdm button[type="button"]:hover {
+  background: rgb(120, 123, 120);
+}
+.details .newAdm {
+  position: relative;
+  display: grid;    
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top:0;
+  background: #2e2185;
+  padding: 20px;
+  color: #fff;
+}
+
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.newPresc {
+margin-bottom: 5px;
+font-weight: bold;
+}
+.newPresc form {
+padding: 20px;
+width: 100%;
+background:#fff;
+}
+
+.newPresc label {
+display: flex;
+margin-bottom: 5px;
+font-weight: bold;
+}
+.newPresc  input[type="text"] {
+width: 70%;
+padding: 5px;
+margin-bottom: 10px;
+}
+
+.newPresc input[type="date"] {
+width: 30%;
+padding: 5px;
+margin-bottom: 10px;
+}
+
+.newPresc select {
+width: 30%;
+padding: 5px;
+margin-bottom: 10px;
+}
+
+.newPresc button {
+margin-right: 10px;
+padding: 10px;
+border: none;
+border-radius: 5px;
+}
+
+.newPresc button[type="reset"] {
+background: red;
+}
+
+.newPresc button[type="submit"] {
+background: green;
+}
+.newPresc button[type="submit"] {
+  background: green;
+}
+.newPresc button[type="reset"]:hover {
+  background: rgb(235, 123, 123);
+}
+.newPresc button[type="submit"]:hover {
+  background: rgb(94, 203, 94);
+}
+.newPresc button[type="button"]:hover {
+  background: rgb(120, 123, 120);
+}
+
+.newPatient {
+  margin-bottom: 5px;
+  font-weight: bold;
+  }
+  .newPatient form {
+  padding: 20px;
+  width: 100%;
+  background:#fff;
+  }
   
+  .newPatient label {
+  display: flex;
+  margin-bottom: 5px;
+  font-weight: bold;
+  }
+  .newPatient  input[type="text"] {
+  width: 70%;
+  padding: 5px;
+  margin-bottom: 10px;
+  }
+  
+  .newPatient input[type="date"] {
+  width: 30%;
+  padding: 5px;
+  margin-bottom: 10px;
+  }
+  
+  .newPatient select {
+  width: 30%;
+  padding: 5px;
+  margin-bottom: 10px;
+  }
+  
+  .newPatient button {
+  margin-right: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  }
+  
+#myModal {
+
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+#myModal-Presc {
+
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+#myModal-Patient {
+
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-dialog {
+  margin: 0 auto;
+  padding: 20px;
+  width: 50%;
+  max-width:100%;
+}
 
   @media (max-width: 991px) {
     .navigation {
@@ -623,6 +865,12 @@
     }
     .status.inProgress {
       white-space: nowrap;
+    }
+    .modal-dialog {
+      margin: 0 auto;
+      padding: 20px;
+      width: 100%;
+      max-width:100%;
     }
   }
   
