@@ -272,7 +272,6 @@
 
   .searchAD {
     position: relative;
-    width: 400px;
     margin: 0 10px;
   }
   
@@ -283,12 +282,13 @@
   
   .searchAD label input {
 
-    height: 30px;
+    height: 50px;
     border-radius: 40px;
     padding: 5px 20px;
     padding-left: 35px;
-  
+    font-size: 20px;
     outline: none;
+    
   }
   
   .prescription label i {
@@ -300,7 +300,6 @@
 
   .searchPresc {
     position: relative;
-    width: 400px;
     margin: 0 10px;
   }
   
@@ -311,12 +310,11 @@
   
   .prescription label input {
 
-    height: 30px;
-    width: 50%;
+    height: 50px;
     border-radius: 40px;
     padding: 5px 20px;
     padding-left: 35px;
-  
+    font-size: 20px;
     outline: none;
   }
   
@@ -329,7 +327,6 @@
 
   .admission input {
     
-    width: 50%;
     height: 20px;
     border-radius: 40px;
     padding: 5px 10px;
@@ -356,6 +353,7 @@
   .cardHeader h2 {
     font-weight: 600;
     color: var(--white);
+    font-size: 32px;
   }
   .cardHeader .btn {
     position: relative;
@@ -374,7 +372,7 @@
 
   .details table thead th {
     position: sticky;
-    top:60px;
+    top:82px;
     background: white;
   }
 

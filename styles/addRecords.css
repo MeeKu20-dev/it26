@@ -192,8 +192,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top:0;
     background: #2e2185;
     padding: 20px;
   }
@@ -303,6 +301,211 @@ background: red;
 
 .newPresc button[type="submit"] {
 background: green;
+}
+.tables {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-gap: 10px;
+  margin-top: 10px;
+}
+
+.tables .admission {
+  position: relative;
+  display: grid;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  max-height: 400px;
+  overflow-y: scroll;  
+}
+
+.searchAD {
+  position: relative;
+  margin: 0 10px;
+}
+
+.searchAD label {
+  position: relative;
+  width: 100%;
+}
+
+.searchAD label input {
+
+  height: 50px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 20px;
+  outline: none;
+}
+
+.prescription label i {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.searchPresc {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.prescription label {
+  position: relative;
+  width: 100%;
+}
+
+.prescription label input {
+
+  height: 30px;
+  width: 50%;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+
+  outline: none;
+}
+
+.searchPresc label i {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.admission input {
+  
+  width: 50%;
+  height: 20px;
+  border-radius: 40px;
+  padding: 5px 10px;
+  padding-left: 35px;
+  outline: none;
+}
+
+.admission label i {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.tables .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: sticky;
+  top:0;
+  background-color: #2e2185;
+  padding: 20px;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--white);
+  font-size: 33px;
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.tables table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.tables table thead th {
+  position: sticky;
+  top:90px;
+  background: white;
+}
+
+.tables table thead td {
+  font-weight: 600;
+}
+.tables .doctor table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+ 
+}
+.tables .doctor table tr:last-child {
+  border-bottom: none;
+}
+.tables .doctor table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.tables .doctor table tr td {
+  padding: 10px;
+  text-align: center;
+}
+.tables .doctor table tr td:last-child {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.tables .doctor table tr td:nth-child(2) {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.tables .doctor table tr td:nth-child(3) {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tables .doctor table tr td:nth-child(3) {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tables .patient {
+  position: relative;
+  display: grid;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  max-height: 400px;
+  overflow-y: scroll; 
+}
+
+.tables table thead td {
+  font-weight: 600;
+}
+.tables .patient table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+ 
+}
+.tables .patient table tr:last-child {
+  border-bottom: none;
+}
+.tables .patient table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.tables .patient table tr td {
+  padding: 10px;
+  text-align: center;
+  
+}
+.tables .patient table tr td:last-child {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.tables .patient table tr td:nth-child(2) {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+.tables .patient table tr td:nth-child(3) {
+  text-align: center;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 

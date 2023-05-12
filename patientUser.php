@@ -49,6 +49,14 @@
                         <span class="title">Doctor</span>
                     </a>
                 </li>
+                <li>
+                    <a href="manageAcc.php">
+                        <span class="icon">
+                            <i class="fa-sharp fa-solid fa-gear"></i>
+                        </span>
+                        <span class="title">Manage Account</span>
+                    </a>
+                </li>
 
                 <li id="dashboard">
                     <a href="main.php">
@@ -196,12 +204,11 @@
                             </tr>
                         </tbody>
                     </table>
-
-
                 </div>
             </div>
-
-            <script src="styles/adminMain.js"></script>
+        </div>
+    </div>
+    <script src="styles/adminMain.js"></script>
 </body>
 
 </html>

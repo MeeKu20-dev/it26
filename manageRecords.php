@@ -23,6 +23,7 @@ if ($result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <link rel="stylesheet" href="styles/manageRecords.css?v=<?php echo time(); ?>">
     <title>Document</title>
 </head>
@@ -334,37 +335,11 @@ if ($result) {
             </div>
         </div>
     </dialog>
-    <dialog class="modal-Presc" id="myModal-Presc">
+    <dialog class="modal" id="myModal-Presc">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="pop-modal">
                     <div class="newPresc">
-                        <div class="cardHeader">
-                            <h2>admNum - Name sa Patient</h2>
-                        </div>
-                        <form class="presc-record" method="post" action="admit.php">
-                            <label for="admission_id">Admission #:</label>
-                            <input type="text" id="admission_id" name="admission_id" /><br />
-
-                            <label for="med_code">Med Code:</label>
-                            <input type="text" id="med_code" name="med_code" /><br />
-
-                            <label for="dosage">Dosage:</label>
-                            <input type="text" id="dosage" name="dosage" /><br />
-
-                            <button type="reset">Clear</button>
-                            <button type="submit">Submit</button>
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal-Presc">Close</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-    </dialog>
-    <dialog class="modal-Patient" id="myModal-Patient">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="pop-modal">
-                    <div class="newPatient">
                         <div class="cardHeader">
                             <h2>admNum - Name sa Patient</h2>
                         </div>
@@ -386,6 +361,7 @@ if ($result) {
                 </div>
             </div>
     </dialog>
+
     <script src="styles/adminMain.js"></script>
 </body>
 

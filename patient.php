@@ -100,7 +100,6 @@
       <div class="patient">
         <div class="cardHeader">
           <h2>Patient Information </h2>
-          <a href="#" class="btn">View All</a>
         </div>
         <table>
           <thead>

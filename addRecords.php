@@ -138,6 +138,92 @@
       </div>
     </div>
 
+    <div class="tables">
+      <div class="doctor">
+        <div class="cardHeader">
+          <h2>Doctor's Information</h2>
+          <div class="searchAD">
+            <label>
+              <input type="text" placeholder="Search Admission #">
+            
+            </label>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <th>Doctor ID</th>
+            <th>Fullname</th>
+            <th>Gender</th>
+            <th>Specialization</th>
+          </thead>
+          <tbody>
+            <?php
+            include("database.php");
+            include("functions.php");
+
+            $query = mysqli_query($con, "select * from `doctor`");
+            while ($row = mysqli_fetch_array($query)) {
+            ?>
+              <tr>
+                <td><?php echo ucwords($row['doctorID']); ?></td>
+                <td><?php echo ucwords($row['fullname']); ?></td>
+                <td><?php echo $row['gender']; ?></td>
+                <td><?php echo ucwords($row['specialization']); ?></td>
+              </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="patient">
+        <div class="cardHeader">
+          <h2>Patient Information </h2>
+          <div class="searchAD">
+            <label>
+              <input type="text" placeholder="Search Admission #">
+          
+            </label>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>PatientID</th>
+              <th>Last name</th>
+              <th>First Name</th>
+              <th>Middle Initial</th>
+              <th>Age</th>
+              <th>Gender</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <?php
+
+            $query = mysqli_query($con, "select * from `patient`");
+            while ($row = mysqli_fetch_array($query)) {
+            ?>
+              <tr>
+                <td><?php echo ucwords($row['patientID']); ?></td>
+                <td><?php echo ucwords($row['ln']); ?></td>
+                <td><?php echo $row['fn']; ?></td>
+                <td><?php echo ucwords($row['mi']); ?></td>
+                <td><?php echo $row['age']; ?></td>
+                <td><?php echo $row['gender']; ?></td>
+              </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    
+
     <script src="styles/adminMain.js"></script>
 </body>
 

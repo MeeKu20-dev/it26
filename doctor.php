@@ -98,7 +98,6 @@
       <div class="doctor">
         <div class="cardHeader">
           <h2>Doctor's Information</h2>
-          <a href="#" class="btn">View All</a>
         </div>
         <table>
           <thead>
