@@ -6,9 +6,9 @@ if (isset($_COOKIE['mycookie'])) {
     $id = $_COOKIE['mycookie'];
     $result = mysqli_query($con, "SELECT * FROM (SELECT x.patientID, y.fullname AS 'patname', age AS 'age', birthday AS 'bday', gender AS 'gen', blood_type AS 'btype', address AS 'add', y.phone_number AS 'patnum', y.email AS 'patemail', x.fullname AS 'emename', x.phone_number AS 'emenum', x.email AS 'emeemail', relationship AS 'relation' FROM (SELECT patient.patientID, emergency_contact.fullname, emergency_contact.phone_number, emergency_contact.email, emergency_contact.relationship FROM emergency_contact INNER JOIN patient ON emergency_contact.em_contactId=patient.em_contactId) AS x INNER JOIN (SELECT patient.patientID, CONCAT( patient.fn, ' ', patient.mi, '. ', patient.ln) AS 'fullname', patient.age, patient.birthday, patient.gender, patient.blood_type, contact_info.address, contact_info.phone_number, contact_info.email FROM patient INNER JOIN contact_info ON patient.contactID=contact_info.contactId) AS y ON x.patientID=y.patientID) AS z WHERE z.patientID='$id';");
     $user_data = mysqli_fetch_assoc($result);
-    $firstname = mysqli_fetch_assoc(mysqli_query($con,"SELECT fn FROM `patient` WHERE patientID='$id'"));
+    $firstname = mysqli_fetch_assoc(mysqli_query($con, "SELECT fn FROM `patient` WHERE patientID='$id'"));
 }
-if($user_data) {
+if ($user_data) {
     $patid = $user_data['patientID'];
     $patname = $user_data['patname'];
     $age = $user_data['age'];
@@ -105,7 +105,7 @@ if($user_data) {
             </div>
 
             <div class="title">
-                <h2>WELCOME, <?php echo $firstname['fn']?>!</h2>
+                <h2>WELCOME, <?php echo $firstname['fn'] ?>!</h2>
             </div>
             <div class="print">
                 <script type="module">
@@ -118,10 +118,12 @@ if($user_data) {
                         xhr.onload = function(e) {
                             if (this.status == 200) {
                                 // create a link element to download the PDF
-                                var blob = new Blob([this.response], {type: 'application/pdf'});
+                                var blob = new Blob([this.response], {
+                                    type: 'application/pdf'
+                                });
                                 var link = document.createElement('a');
                                 link.href = window.URL.createObjectURL(blob);
-                                link.download = '<?php echo $patid?>_information.pdf';
+                                link.download = '<?php echo $patid ?>_information.pdf';
                                 link.click();
                             }
                         };
@@ -130,7 +132,7 @@ if($user_data) {
 
                     button.addEventListener('click', generatePDF);
                 </script>
-                    <button type="submit" id="generate"><i class="fa-solid fa-print"></i> Print Information</button>
+                <button type="submit" id="generate"><i class="fa-solid fa-print"></i> Print Information</button>
             </div>
         </div>
 
@@ -145,42 +147,42 @@ if($user_data) {
                     <table>
                         <tr>
                             <th>Patient ID:</th>
-                            <td><?php echo $patid?></td>
+                            <td><?php echo $patid ?></td>
                         </tr>
                         <tr>
                             <th>Full Name:</th>
-                            <td><?php echo $patname?></td>
+                            <td><?php echo $patname ?></td>
                         </tr>
                         <tr>
                             <th>Age:</th>
-                            <td><?php echo $age?></td>
+                            <td><?php echo $age ?></td>
                         </tr>
 
                         <tr>
                             <th>Birth Date:</th>
-                            <td><?php echo $bday?></td>
+                            <td><?php echo $bday ?></td>
                         </tr>
                         <tr>
                             <th>Gender:</th>
-                            <td><?php echo $gender?></td>
+                            <td><?php echo $gender ?></td>
                         </tr>
 
                         <tr>
                             <th>Blood Type:</th>
-                            <td><?php echo $btype?></td>
+                            <td><?php echo $btype ?></td>
                         </tr>
 
                         <tr>
                             <th>Address:</th>
-                            <td><?php echo $address?></td>
+                            <td><?php echo $address ?></td>
                         </tr>
                         <tr>
                             <th>Contact Number:</th>
-                            <td><?php echo $patnum?></td>
+                            <td><?php echo $patnum ?></td>
                         </tr>
                         <tr>
                             <th>Email:</th>
-                            <td><?php echo $patmail?></td>
+                            <td><?php echo $patmail ?></td>
                         </tr>
                     </table>
                 </div>
@@ -193,19 +195,19 @@ if($user_data) {
                     <table>
                         <tr>
                             <th>Full Name:</th>
-                            <td><?php echo $emename?></td>
+                            <td><?php echo $emename ?></td>
                         </tr>
                         <tr>
                             <th>Contact Number:</th>
-                            <td><?php echo $emenum?></td>
+                            <td><?php echo $emenum ?></td>
                         </tr>
                         <tr>
                             <th>Email:</th>
-                            <td><?php echo $ememail?></td>
+                            <td><?php echo $ememail ?></td>
                         </tr>
                         <tr>
                             <th>Relationship:</th>
-                            <td><?php echo $relation?></td>
+                            <td><?php echo $relation ?></td>
                         </tr>
                     </table>
                 </div>
@@ -224,63 +226,75 @@ if($user_data) {
                             </tr>
                         </thead>
                         <tbody>
-                        <?php
+                            <?php
                             $query = mysqli_query($con, "SELECT * FROM `admission` WHERE `patientID` = '$patid'");
+                            $admissionFound = false;
+
                             while ($row = mysqli_fetch_array($query)) {
+                                $admissionFound = true;
                             ?>
-                            <tr>
-                                <th>Admission Number:</th>
-                                <td><?php echo ucwords($row['AdmissionNo']); ?></td>
-                            </tr>    
-                            <tr>
-                                <th>Admission Date:</th>
-                                <td><?php echo ucwords($row['admdate']); ?></td>
-                            </tr>   
-                            <tr>
-                                <th>Doctor ID:</th>
-                                <td><?php echo ucwords($row['doctorID']); ?></td>
-                            </tr>    
-                            <tr>
-                                <th>Illness:</th>
-                                <td><?php echo $row['illness']; ?></td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
+                                <tr>
+                                    <th>Admission Number:</th>
+                                    <td><?php echo ucwords($row['AdmissionNo']); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Admission Date:</th>
+                                    <td><?php echo ucwords($row['admdate']); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Doctor ID:</th>
+                                    <td><?php echo ucwords($row['doctorID']); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Illness:</th>
+                                    <td><?php echo $row['illness']; ?></td>
+                                </tr>
+                            <?php
+                            }
+
+                            if (!$admissionFound) {
+                                echo '<tr><td colspan="2">You don\'t have any admission records yet.</td></tr>';
+                            }
+                            ?>
                             <tr>
                                 <th colspan="2" style="text-align:center; background-color: #a6a4a4; color:#000">Prescriptions</th>
                             </tr>
                             <?php
-                            $admission_numbers = array();
                             $query = mysqli_query($con, "SELECT `AdmissionNo` FROM `admission` WHERE `patientID` = '$patid';");
+                            $prescriptionFound = false;
+
                             while ($row = mysqli_fetch_array($query)) {
                                 $old_admission_numbers[] = $row['AdmissionNo'];
                             }
-                            foreach($old_admission_numbers as $ids){
-                                $query = mysqli_query($con, "select * from `prescription` WHERE `AdmissionNo` = '$ids'");
+
+                            foreach ($old_admission_numbers as $ids) {
+                                $query = mysqli_query($con, "SELECT * FROM `prescription` WHERE `AdmissionNo` = '$ids'");
                                 while ($row = mysqli_fetch_array($query)) {
-                                ?>
-                                <tr>
-                                    <th>Med Code:</th>
-                                    <td><?php echo ucwords($row['medcode']); ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Dosage:</th>
-                                    <td><?php echo $row['dosage']; ?></td>
-                                </tr>
-                                <?php
+                                    $prescriptionFound = true;
+                            ?>
+                                    <tr>
+                                        <th>Med Code:</th>
+                                        <td><?php echo ucwords($row['medcode']); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Dosage:</th>
+                                        <td><?php echo $row['dosage']; ?></td>
+                                    </tr>
+                            <?php
                                 }
-                                ?>
-                            <?php    
+                            }
+
+                            if (!$prescriptionFound) {
+                                echo '<tr><td colspan="2">You don\'t have any prescription records yet.</td></tr>';
                             }
                             ?>
                         </tbody>
                     </table>
-
-
                 </div>
             </div>
-            
+
+
             <script src="styles/adminMain.js"></script>
 </body>
+
 </html>

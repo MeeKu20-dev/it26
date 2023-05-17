@@ -121,38 +121,37 @@ submitBtn.addEventListener("click", function (event) {
   if (password !== confirmPass) {
     alert("Passwords do not match");
     return;
+  } else {
+    const firstname = document.querySelector("#fname").value;
+    const middleInit = document.querySelector("#mid-init").value;
+    const lastname = document.querySelector("#lname").value;
+    const age = document.querySelector("#age").value;
+    const bdate = document.querySelector("#bdate").value;
+    const gender = document.querySelector("#gender").value;
+    const blood_type = document.querySelector("#blood-type").value;
+    const address = document.querySelector("#address").value;
+    const email = document.querySelector("#e-mail").value;
+    const phone_num1 = document.querySelector("#contact").value;
+    const fullname = document.querySelector("#e-fullname").value;
+    const eme_email = document.querySelector("#email-add").value;
+    const phone_num2 = document.querySelector("#phone-num").value;
+    const relationship = document.querySelector("#relationship").value;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "save_user.php");
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        console.log(xhr.responseText);
+        alert("You're successfully registered!");
+        document.location = "login.php";
+      }
+    };
+    xhr.send(
+      `fname=${firstname}&mid-init=${middleInit}&lname=${lastname}&age=${age}&bdate=${bdate}&gender=${gender}&blood-type=${blood_type}&address=${address}&e-mail=${email}&contact=${phone_num1}&e-fullname=${fullname}&email-add=${eme_email}&phone-num=${phone_num2}&relationship=${relationship}&username=${username}&password=${password}`
+    );
   }
-
-  const firstname = document.querySelector("#fname").value;
-  const middleInit = document.querySelector("#mid-init").value;
-  const lastname = document.querySelector("#lname").value;
-  const age = document.querySelector("#age").value;
-  const bdate = document.querySelector("#bdate").value;
-  const gender = document.querySelector("#gender").value;
-  const blood_type = document.querySelector("#blood-type").value;
-  const address = document.querySelector("#address").value;
-  const email = document.querySelector("#e-mail").value;
-  const phone_num1 = document.querySelector("#contact").value;
-  const fullname = document.querySelector("#e-fullname").value;
-  const eme_email = document.querySelector("#email-add").value;
-  const phone_num2 = document.querySelector("#phone-num").value;
-  const relationship = document.querySelector("#relationship").value;
-
-  const xhr = new XMLHttpRequest();
-  xhr.open("POST", "save_user.php");
-  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xhr.onload = function () {
-    if (xhr.status === 200) {
-      console.log(xhr.responseText);
-      alert("You're successfully registered!");
-      document.location = "login.php";
-    }
-  };
-  xhr.send(
-    `fname=${firstname}&mid-init=${middleInit}&lname=${lastname}&age=${age}&bdate=${bdate}&gender=${gender}&blood-type=${blood_type}&address=${address}&e-mail=${email}&contact=${phone_num1}&e-fullname=${fullname}&email-add=${eme_email}&phone-num=${phone_num2}&relationship=${relationship}&username=${username}&password=${password}`
-  );
 });
-
 
 prevBtnSec.addEventListener("click", function (event) {
   event.preventDefault();
