@@ -3,7 +3,7 @@ session_start();
 include("database.php");
 include("functions.php");
 
-$query = "SELECT ( SELECT COUNT(*) FROM patient ) AS 'total patients',( SELECT COUNT(*) FROM medicine ) AS 'total medicine' ,( SELECT COUNT(*) FROM doctor ) AS 'total doctors' FROM DUAL";
+$query = "SELECT ( SELECT COUNT(*) FROM `admission` WHERE admdate=CURRENT_DATE ) AS 'total patients',( SELECT COUNT(*) FROM medicine ) AS 'total medicine' ,( SELECT COUNT(*) FROM doctor ) AS 'total doctors' FROM DUAL";
 $result = mysqli_query($con, $query);
 if ($result) {
     if ($result && mysqli_num_rows($result) > 0) {
@@ -23,7 +23,6 @@ if ($result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <link rel="stylesheet" href="styles/manageRecords.css?v=<?php echo time(); ?>">
     <title>Document</title>
 </head>
@@ -119,7 +118,7 @@ if ($result) {
                         }
                         ?></div>
                     <div class="cardName">Today's Patient</div>
-                    <div class="date">2023-20-02</div>
+                    <div class="date"><?php echo date("Y-m-d")?></div>
                 </div>
 
                 <div class="iconBx">
@@ -168,12 +167,12 @@ if ($result) {
                     <h2>Admissions</h2>
                     <div class="searchAD">
                         <label>
-                            <input type="text" placeholder="Search Admission #">
+                            <input type="text" placeholder="Search Admission #"  id="myInput0" onkeyup='adTableSearch()'>
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </label>
                     </div>
                 </div>
-                <table class="table table-striped table-bordered table-hover">
+                <table class="table table-striped table-bordered table-hover" id="admissionTable">
                     <thead>
                         <th>Admission Number</th>
                         <th>Admitted Date</th>
@@ -185,7 +184,6 @@ if ($result) {
                     </thead>
                     <tbody>
                         <?php
-
                         $query = mysqli_query($con, "select * from `admission`");
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
@@ -196,8 +194,8 @@ if ($result) {
                                 <td><?php echo ucwords($row['doctorID']); ?></td>
                                 <td><?php echo $row['illness']; ?></td>
                                 <td>
-                                    <button class="edit-button" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-pencil"></i> Edit</button>
-                                    <button class="delete-button"><i class="fa fa-trash"></i> Delete</button>
+                                    <button class="edit-button1" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-pencil"></i> Edit</button>
+                                    <button class="delete-button2"><i class="fa fa-trash"></i> Delete</button>
                                 </td>
 
                             </tr>
@@ -213,14 +211,15 @@ if ($result) {
                     <h2>Prescription</h2>
                     <div class="searchPresc">
                         <label>
-                            <input type="text" placeholder="Search Admission #">
+                            <input type="text" placeholder="Search Admission #"   id="myInput9" onkeyup='presTableSearch()'>
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </label>
                     </div>
                 </div>
 
-                <table>
+                <table id="presTable">
                     <thead>
+                        <th>ID</th>
                         <th>Admission Number</th>
                         <th>Medcode</th>
                         <th>Dosage</th>
@@ -233,12 +232,13 @@ if ($result) {
                         while ($row = mysqli_fetch_array($query)) {
                         ?>
                             <tr>
+                                <td><?php echo $row['prescription_id']; ?></td>
                                 <td><?php echo ucwords($row['AdmissionNo']); ?></td>
                                 <td><?php echo ucwords($row['medcode']); ?></td>
                                 <td><?php echo $row['dosage']; ?></td>
                                 <td>
-                                    <button class="edit-button" data-bs-toggle="modal" data-bs-target="#myModal-Presc"><i class="fa fa-pencil"></i> Edit</button>
-                                    <button class="delete-button"><i class="fa fa-trash"></i> Delete</button>
+                                    <button class="edit-button2" data-bs-toggle="modal" data-bs-target="#myModal-Presc"><i class="fa fa-pencil"></i> Edit</button>
+                                    <button class="delete-button1"><i class="fa fa-trash"></i> Delete</button>
                                 </td>
                             </tr>
                         <?php
@@ -248,86 +248,130 @@ if ($result) {
 
                 </table>
             </div>
-
-            <!-- <div class="patients">
-                <div class="cardHeader">
-                    <h2>Patients</h2>
-                    <div class="searchPat">
-                        <label>
-                            <input type="text" placeholder="Search Patient #">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </label>
-                    </div>
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>PatientID</th>
-                            <th>Last name</th>
-                            <th>First Name</th>
-                            <th>Middle Initial</th>
-                            <th>Age</th>
-                            <th>Gender</th>
-                            <th></th>
-
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php
-
-                        $query = mysqli_query($con, "select * from `patient`");
-                        while ($row = mysqli_fetch_array($query)) {
-                        ?>
-                            <tr>
-                                <td><?php echo ucwords($row['patientID']); ?></td>
-                                <td><?php echo ucwords($row['ln']); ?></td>
-                                <td><?php echo $row['fn']; ?></td>
-                                <td><?php echo ucwords($row['mi']); ?></td>
-                                <td><?php echo $row['age']; ?></td>
-                                <td><?php echo $row['gender']; ?></td>
-                                <td>
-                                    <button class="edit-button" data-bs-toggle="modal" data-bs-target="#myModal-Patient"><i class="fa fa-pencil"></i> Edit</button>
-                                    <button class="delete-button"><i class="fa fa-trash"></i> Delete</button>
-                                </td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div> -->
         </div>
     </div>
+    <script>
+        const edit1Buttons = document.querySelectorAll('.edit-button1');
+        edit1Buttons.forEach(button => {
+            button.addEventListener('click', event => {
+                const row = event.target.parentNode.parentNode;
+                var admNum = row.cells[0].textContent;
+                var date = row.cells[1].textContent;
+                var patientName = row.cells[2].textContent;
+                var docID = row.cells[3].textContent;
+                var ill = row.cells[4].textContent;
 
+                document.getElementById('admission-id').value = admNum;
+                document.getElementById('admission_date').value = date;
+                document.getElementById('patient_id').value = patientName;
+                document.getElementById('doctor_id').value = docID;
+                document.getElementById('illness').value = ill; 
+
+                var modal = document.getElementById("myModal");
+                modal.querySelector(".cardHeader h2").textContent = admNum + " - " + patientName;
+            });
+        });
+
+
+        const edit2Buttons = document.querySelectorAll('.edit-button2');
+
+            edit2Buttons.forEach(button => {
+                button.addEventListener('click', event => {
+                    const row = event.target.parentNode.parentNode;
+                    var admNum = row.cells[0].textContent;
+                    var med = row.cells[2].textContent;
+                    var dos = row.cells[3].textContent;
+                    document.getElementById('pres-id').value = admNum;
+                    document.getElementById('med_code').value = med; 
+                    document.getElementById('dosage').value = dos;  
+                    console.log(admNum);
+
+                    var modal = document.getElementById("myModal-Presc");
+                    modal.querySelector(".cardHeader h2").textContent = "Prescription ID: " + admNum;
+                });
+            });
+
+        const delete1Buttons = document.querySelectorAll('.delete-button1');
+
+        delete1Buttons.forEach(button => {
+            button.addEventListener('click', event => {
+            const row = event.target.parentNode.parentNode;
+            const id = row.cells[0].textContent; 
+
+            if (confirm(`Are you sure you want to delete record with ID: ${id}?`)) {
+                // Send AJAX request to delete the record
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'delete.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    // Reload the page to show the updated table
+                    location.reload();
+                    }
+                };
+                xhr.send(`id=${id}`);
+                }
+            });
+        });
+
+        const delete2Buttons = document.querySelectorAll('.delete-button2');
+
+        delete2Buttons.forEach(button => {
+            button.addEventListener('click', event => {
+            const row = event.target.parentNode.parentNode;
+            const ad = row.cells[0].textContent; 
+
+            if (confirm(`Are you sure you want to delete record with Admission Number: ${ad}?`)) {
+                // Send AJAX request to delete the record
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'delete.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    // Reload the page to show the updated table
+                    location.reload();
+                    }
+                };
+                xhr.send(`ad=${ad}`);
+                }
+            });
+        });
+
+        function clearCookie() {
+            location.reload();
+        }
+    </script>   
+    <?php
+        if (isset($_SESSION['edit_id'])) {
+            $adID = $_SESSION['edit_id'];
+            unset($_SESSION['edit_id']);
+        }
+    ?>
     <dialog class="modal" id="myModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="pop-modal">
                     <div class="newAdm">
                         <div class="cardHeader">
-                            <h2>admNum - FullName sa Patient</h2>
+                            <h2><?php echo $adID?> - FullName sa Patient</h2>
                         </div>
-                        <form method="post" action="admit.php">
-                            <label for="admission_id">Admission #:</label>
-                            <input type="text" id="admission_id" name="admission_id" /><br />
+                        <form method="post" action="editRecord.php">
+                            <input type="hidden" id="admission-id" name="admission-id" value="">
 
                             <label for="admission_date">Admission Date:</label>
-                            <input type="date" id="admission_date" name="admission_date" /><br />
+                            <input type="date" id="admission_date" name="admission_date" value=""/><br />
 
                             <label for="patient_id">Patient ID:</label>
-                            <input type="text" id="patient_id" name="patient_id" /><br />
+                            <input type="text" id="patient_id" name="patient_id" value=""/><br />
 
                             <label for="doctor_id">Doctor ID:</label>
-                            <input type="text" id="doctor_id" name="doctor_id" /><br />
-
+                            <input type="text" id="doctor_id" name="doctor_id" value=""/><br />
 
                             <label for="illness">Illness:</label>
-                            <input type="text" id="illness" name="illness" /><br />
+                            <input type="text" id="illness" name="illness" value=""/><br />
 
                             <button type="reset">Clear</button>
-                            <button type="submit">Submit</button>
+                            <button type="submit" name="edit-admission">Submit</button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                         </form>
                     </div>
@@ -335,7 +379,7 @@ if ($result) {
             </div>
         </div>
     </dialog>
-    <dialog class="modal" id="myModal-Presc">
+    <dialog class="modal-Presc" id="myModal-Presc">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="pop-modal">
@@ -343,9 +387,31 @@ if ($result) {
                         <div class="cardHeader">
                             <h2>admNum - Name sa Patient</h2>
                         </div>
+                        <form class="presc-record" method="post" action="editRecord.php">
+                            <input type="hidden" id="pres-id" name="pres-id" value="">
+                            <label for="med_code">Med Code:</label>
+                            <input type="text" id="med_code" name="med_code" /><br />
+
+                            <label for="dosage">Dosage:</label>
+                            <input type="text" id="dosage" name="dosage" /><br />
+
+                            <button type="reset">Clear</button>
+                            <button type="submit" name="editPres">Submit</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal-Presc">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </dialog>
+    <dialog class="modal-Patient" id="myModal-Patient">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="pop-modal">
+                    <div class="newPatient">
+                        <div class="cardHeader">
+                            <h2>admNum - Name sa Patient</h2>
+                        </div>
                         <form class="presc-record" method="post" action="admit.php">
-                            <label for="admission_id">Admission #:</label>
-                            <input type="text" id="admission_id" name="admission_id" /><br />
 
                             <label for="med_code">Med Code:</label>
                             <input type="text" id="med_code" name="med_code" /><br />
@@ -361,8 +427,52 @@ if ($result) {
                 </div>
             </div>
     </dialog>
+    <script src="styles/adminMain.js" type="application/javascript"></script>
+    <script type="application/javascript">
+        function adTableSearch() {
+            let input, filter, table, tr, td, txtValue;
 
-    <script src="styles/adminMain.js"></script>
+            //Intialising Variables
+            input = document.getElementById("myInput0");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("admissionTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function presTableSearch() {
+            let input, filter, table, tr, td, txtValue;
+
+            //Intialising Variables
+            input = document.getElementById("myInput9");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("presTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
 </body>
 
 </html>

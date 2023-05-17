@@ -248,7 +248,6 @@
   .details table thead th {
     position: sticky;
     top:60px;
-    background: white;
   }
   .details table thead td {
     font-weight: 600;
@@ -337,6 +336,17 @@
       position: fixed;
       left: initial;
     }
+  }
+
+  th {
+    text-align: center;
+    background-color: #f5f5f5;
+    width: 30%;
+  }
+
+  th, td {
+    padding: 8px;
+    border: 1px solid #f2f2f2;
   }
   
 

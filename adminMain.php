@@ -3,7 +3,7 @@ session_start();
 include("database.php");
 include("functions.php");
 
-$query = "SELECT ( SELECT COUNT(*) FROM patient ) AS 'total patients',( SELECT COUNT(*) FROM medicine ) AS 'total medicine' ,( SELECT COUNT(*) FROM doctor ) AS 'total doctors' FROM DUAL";
+$query = "SELECT ( SELECT COUNT(*) FROM `admission` WHERE admdate=CURRENT_DATE ) AS 'total patients',( SELECT COUNT(*) FROM medicine ) AS 'total medicine' ,( SELECT COUNT(*) FROM doctor ) AS 'total doctors' FROM DUAL";
 $result = mysqli_query($con, $query);
 if ($result) {
   if ($result && mysqli_num_rows($result) > 0) {
@@ -117,7 +117,7 @@ if ($result) {
             }
             ?></div>
           <div class="cardName">Today's Patient</div>
-          <div class="date">2023-20-02</div>
+          <div class="date"><?php echo date("Y-m-d")?></div>
         </div>
 
         <div class="iconBx">
@@ -166,12 +166,12 @@ if ($result) {
           <h2>Admissions</h2>
           <div class="searchAD">
             <label>
-              <input type="text" placeholder="Search Admission #">
+              <input type="text" placeholder="Search Admission #" id="myInput" onkeyup='adTableSearch()'>
               <i class="fa-solid fa-magnifying-glass"></i>
             </label>
           </div>
         </div>
-        <table class="table table-striped table-bordered table-hover">
+        <table class="table table-striped table-bordered table-hover"  id="admissionTable">
           <thead>
             <th>Admission Number</th>
             <th>Admitted Date</th>
@@ -204,13 +204,13 @@ if ($result) {
           <h2>Prescription</h2>
           <div class="searchPresc">
             <label>
-              <input type="text" placeholder="Search Admission #">
+              <input type="text" placeholder="Search Admission #"  id="myInput2" onkeyup='presTableSearch()'>
               <i class="fa-solid fa-magnifying-glass"></i>
             </label>
           </div>
         </div>
 
-        <table>
+        <table  id="presTable">
           <thead>
             <th>Admission Number</th>
             <th>Medcode</th>
@@ -237,6 +237,50 @@ if ($result) {
     </div>
 
     <script src="styles/adminMain.js"></script>
+    <script type="application/javascript">
+      function adTableSearch() {
+            let input, filter, table, tr, td, txtValue;
+
+            //Intialising Variables
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("admissionTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+        function presTableSearch() {
+            let input, filter, table, tr, td, txtValue;
+
+            //Intialising Variables
+            input = document.getElementById("myInput2");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("presTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (let i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>

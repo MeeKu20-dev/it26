@@ -1,3 +1,29 @@
+<?php
+include("database.php");
+include("functions.php");
+
+if (isset($_COOKIE['mycookie'])) {
+    $id = $_COOKIE['mycookie'];
+    $result = mysqli_query($con, "SELECT * FROM (SELECT x.patientID, y.fullname AS 'patname', age AS 'age', birthday AS 'bday', gender AS 'gen', blood_type AS 'btype', address AS 'add', y.phone_number AS 'patnum', y.email AS 'patemail', x.fullname AS 'emename', x.phone_number AS 'emenum', x.email AS 'emeemail', relationship AS 'relation' FROM (SELECT patient.patientID, emergency_contact.fullname, emergency_contact.phone_number, emergency_contact.email, emergency_contact.relationship FROM emergency_contact INNER JOIN patient ON emergency_contact.em_contactId=patient.em_contactId) AS x INNER JOIN (SELECT patient.patientID, CONCAT( patient.fn, ' ', patient.mi, '. ', patient.ln) AS 'fullname', patient.age, patient.birthday, patient.gender, patient.blood_type, contact_info.address, contact_info.phone_number, contact_info.email FROM patient INNER JOIN contact_info ON patient.contactID=contact_info.contactId) AS y ON x.patientID=y.patientID) AS z WHERE z.patientID='$id';");
+    $user_data = mysqli_fetch_assoc($result);
+    $firstname = mysqli_fetch_assoc(mysqli_query($con,"SELECT fn FROM `patient` WHERE patientID='$id'"));
+}
+if($user_data) {
+    $patid = $user_data['patientID'];
+    $patname = $user_data['patname'];
+    $age = $user_data['age'];
+    $bday = $user_data['bday'];
+    $gender = $user_data['gen'];
+    $btype = $user_data['btype'];
+    $address = $user_data['add'];
+    $patnum = $user_data['patnum'];
+    $patmail = $user_data['patemail'];
+    $emename = $user_data['emename'];
+    $emenum = $user_data['emenum'];
+    $ememail = $user_data['emeemail'];
+    $relation = $user_data['relation'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +31,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles/patientUSer.css?v=<?php echo time(); ?>">
     <title>Document</title>
@@ -49,6 +76,7 @@
                         <span class="title">Doctor</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="manageAcc.php">
                         <span class="icon">
@@ -77,7 +105,32 @@
             </div>
 
             <div class="title">
-                <h2>WELCOME, (FN SA PATIENT)!</h2>
+                <h2>WELCOME, <?php echo $firstname['fn']?>!</h2>
+            </div>
+            <div class="print">
+                <script type="module">
+                    const button = document.getElementById('generate');
+
+                    function generatePDF() {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('GET', 'exportPDF.php', true);
+                        xhr.responseType = 'blob';
+                        xhr.onload = function(e) {
+                            if (this.status == 200) {
+                                // create a link element to download the PDF
+                                var blob = new Blob([this.response], {type: 'application/pdf'});
+                                var link = document.createElement('a');
+                                link.href = window.URL.createObjectURL(blob);
+                                link.download = '<?php echo $patid?>_information.pdf';
+                                link.click();
+                            }
+                        };
+                        xhr.send();
+                    };
+
+                    button.addEventListener('click', generatePDF);
+                </script>
+                    <button type="submit" id="generate"><i class="fa-solid fa-print"></i> Print Information</button>
             </div>
         </div>
 
@@ -92,42 +145,42 @@
                     <table>
                         <tr>
                             <th>Patient ID:</th>
-                            <td>Px10</td>
+                            <td><?php echo $patid?></td>
                         </tr>
                         <tr>
                             <th>Full Name:</th>
-                            <td>Abdul Jakol D. Salsalani</td>
+                            <td><?php echo $patname?></td>
                         </tr>
                         <tr>
                             <th>Age:</th>
-                            <td>30</td>
+                            <td><?php echo $age?></td>
                         </tr>
 
                         <tr>
                             <th>Birth Date:</th>
-                            <td>2023-02-01</td>
+                            <td><?php echo $bday?></td>
                         </tr>
                         <tr>
                             <th>Gender:</th>
-                            <td>Male</td>
+                            <td><?php echo $gender?></td>
                         </tr>
 
                         <tr>
                             <th>Blood Type:</th>
-                            <td>O</td>
+                            <td><?php echo $btype?></td>
                         </tr>
 
                         <tr>
                             <th>Address:</th>
-                            <td>Blk 2 Lot 10 San Antonio Village, Matina, Davao City</td>
+                            <td><?php echo $address?></td>
                         </tr>
                         <tr>
                             <th>Contact Number:</th>
-                            <td>0938499334</td>
+                            <td><?php echo $patnum?></td>
                         </tr>
                         <tr>
                             <th>Email:</th>
-                            <td>abdul@gmail.com</td>
+                            <td><?php echo $patmail?></td>
                         </tr>
                     </table>
                 </div>
@@ -140,19 +193,19 @@
                     <table>
                         <tr>
                             <th>Full Name:</th>
-                            <td>Nicole Kog D. Salsalani</td>
+                            <td><?php echo $emename?></td>
                         </tr>
                         <tr>
                             <th>Contact Number:</th>
-                            <td>09234837451</td>
+                            <td><?php echo $emenum?></td>
                         </tr>
                         <tr>
                             <th>Email:</th>
-                            <td>nicole@gmail.com</td>
+                            <td><?php echo $ememail?></td>
                         </tr>
                         <tr>
                             <th>Relationship:</th>
-                            <td>Wife</td>
+                            <td><?php echo $relation?></td>
                         </tr>
                     </table>
                 </div>
@@ -171,44 +224,63 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <?php
+                            $query = mysqli_query($con, "SELECT * FROM `admission` WHERE `patientID` = '$patid'");
+                            while ($row = mysqli_fetch_array($query)) {
+                            ?>
                             <tr>
-                                <th>Admission #:</th>
-                                <td>ad001</td>
-                            </tr>
+                                <th>Admission Number:</th>
+                                <td><?php echo ucwords($row['AdmissionNo']); ?></td>
+                            </tr>    
                             <tr>
                                 <th>Admission Date:</th>
-                                <td>2023-02-01</td>
-                            </tr>
-                            <tr>
-                                <th>Patient ID:</th>
-                                <td>Px10</td>
-                            </tr>
+                                <td><?php echo ucwords($row['admdate']); ?></td>
+                            </tr>   
                             <tr>
                                 <th>Doctor ID:</th>
-                                <td>dd5</td>
-                            </tr>
+                                <td><?php echo ucwords($row['doctorID']); ?></td>
+                            </tr>    
                             <tr>
                                 <th>Illness:</th>
-                                <td>Kalibanga</td>
+                                <td><?php echo $row['illness']; ?></td>
                             </tr>
+                        <?php
+                        }
+                        ?>
                             <tr>
-                                <th colspan="2" style="text-align:center; background-color: #a6a4a4; color:#000">Prescription</th>
+                                <th colspan="2" style="text-align:center; background-color: #a6a4a4; color:#000">Prescriptions</th>
                             </tr>
-                            <tr>
-                                <th>Med Code:</th>
-                                <td>m001</td>
-                            </tr>
-                            <tr>
-                                <th>Dosage:</th>
-                                <td>3x a day</td>
-                            </tr>
+                            <?php
+                            $admission_numbers = array();
+                            $query = mysqli_query($con, "SELECT `AdmissionNo` FROM `admission` WHERE `patientID` = '$patid';");
+                            while ($row = mysqli_fetch_array($query)) {
+                                $old_admission_numbers[] = $row['AdmissionNo'];
+                            }
+                            foreach($old_admission_numbers as $ids){
+                                $query = mysqli_query($con, "select * from `prescription` WHERE `AdmissionNo` = '$ids'");
+                                while ($row = mysqli_fetch_array($query)) {
+                                ?>
+                                <tr>
+                                    <th>Med Code:</th>
+                                    <td><?php echo ucwords($row['medcode']); ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Dosage:</th>
+                                    <td><?php echo $row['dosage']; ?></td>
+                                </tr>
+                                <?php
+                                }
+                                ?>
+                            <?php    
+                            }
+                            ?>
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
-        </div>
-    </div>
-    <script src="styles/adminMain.js"></script>
+            
+            <script src="styles/adminMain.js"></script>
 </body>
-
 </html>

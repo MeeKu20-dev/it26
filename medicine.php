@@ -88,11 +88,9 @@
 
       <div class="search">
         <label>
-          <input type="text" placeholder="Search Medicine">
+          <input type="text" placeholder="Search Medicine"  id="myInput3" onkeyup='medTableSearch()' >
           <i class="fa-solid fa-magnifying-glass"></i>
         </label>
-
-
       </div>
     </div>
 
@@ -101,7 +99,7 @@
         <div class="cardHeader">
           <h2>Medicine's Information </h2>
         </div>
-        <table>
+        <table id="medTable">
           <thead>
             <tr>
               <th>Med Code</th>
@@ -137,7 +135,7 @@
     </div>
   </div>
 
-  <script src="styles/adminMain.js"></script>
+  <script src="styles/adminMain.js" type="application/javascript"></script>
 </body>
 
 </html>

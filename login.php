@@ -16,7 +16,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 				if($user_data['password'] === $password) {
 					$_SESSION['user_id'] = $user_data['user_id'];
 					echo '<script>alert("Logged In")</script>';
-					header('location:adminMain.php');
+					if($user_data['role']==="admin") {
+						header('location:adminMain.php');
+					} elseif ($user_data['role']==="patient") {
+						$id = $user_data['patientID'];
+						setcookie("mycookie", $id, time() + 3600, "/");
+						header('location:patientUser.php');
+					}
 					die;
 				}
 			}

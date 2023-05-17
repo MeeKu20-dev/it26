@@ -1,3 +1,6 @@
+<?php
+include 'admit.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -97,8 +100,8 @@
           <h2>New Admission</h2>
         </div>
         <form method="post" action="admit.php">
-          <label for="admission_id">Admission #:</label>
-          <input type="text" id="admission_id" name="admission_id" /><br />
+          <!-- <label for="admission_id">Admission #:</label>
+          <input type="text" id="admission_id" name="admission_id" /><br /> -->
 
           <label for="admission_date">Admission Date:</label>
           <input type="date" id="admission_date" name="admission_date" /><br />
@@ -114,7 +117,7 @@
           <input type="text" id="illness" name="illness" /><br />
 
           <button type="reset">Clear</button>
-          <button type="submit">Submit</button>
+          <button type="submit" name="admit">Submit</button>
         </form>
       </div>
 
@@ -133,61 +136,22 @@
           <input type="text" id="dosage" name="dosage" /><br />
 
           <button type="reset">Clear</button>
-          <button type="submit">Submit</button>
+          <button type="submit" name="prescribe">Submit</button>
         </form>
       </div>
     </div>
-
     <div class="tables">
-      <div class="doctor">
-        <div class="cardHeader">
-          <h2>Doctor's Information</h2>
-          <div class="searchAD">
-            <label>
-              <input type="text" placeholder="Search Admission #">
-            
-            </label>
-          </div>
-        </div>
-        <table>
-          <thead>
-            <th>Doctor ID</th>
-            <th>Fullname</th>
-            <th>Gender</th>
-            <th>Specialization</th>
-          </thead>
-          <tbody>
-            <?php
-            include("database.php");
-            include("functions.php");
-
-            $query = mysqli_query($con, "select * from `doctor`");
-            while ($row = mysqli_fetch_array($query)) {
-            ?>
-              <tr>
-                <td><?php echo ucwords($row['doctorID']); ?></td>
-                <td><?php echo ucwords($row['fullname']); ?></td>
-                <td><?php echo $row['gender']; ?></td>
-                <td><?php echo ucwords($row['specialization']); ?></td>
-              </tr>
-            <?php
-            }
-            ?>
-          </tbody>
-        </table>
-      </div>
-
       <div class="patient">
         <div class="cardHeader">
           <h2>Patient Information </h2>
           <div class="searchAD">
             <label>
-              <input type="text" placeholder="Search Admission #">
-          
+              <input type="text" placeholder="Search Admission #" id="myInput" onkeyup='patientSearch()'>
+              <i class="fa-solid fa-magnifying-glass"></i>
             </label>
           </div>
         </div>
-        <table>
+        <table id="patientTable">
           <thead>
             <tr>
               <th>PatientID</th>
@@ -220,11 +184,89 @@
           </tbody>
         </table>
       </div>
+      <div class="doctor">
+        <div class="cardHeader">
+          <h2>Doctor's Information</h2>
+          <div class="searchAD">
+            <label>
+              <input type="text" placeholder="Search Admission #" id="myInput2" onkeyup='doctorSearch()'>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </label>
+          </div>
+        </div>
+        <table id="doctorTable">
+          <thead>
+            <th>Doctor ID</th>
+            <th>Fullname</th>
+            <th>Gender</th>
+            <th>Specialization</th>
+          </thead>
+          <tbody>
+            <?php
+
+            $query = mysqli_query($con, "select * from `doctor`");
+            while ($row = mysqli_fetch_array($query)) {
+            ?>
+              <tr>
+                <td><?php echo ucwords($row['doctorID']); ?></td>
+                <td><?php echo ucwords($row['fullname']); ?></td>
+                <td><?php echo $row['gender']; ?></td>
+                <td><?php echo ucwords($row['specialization']); ?></td>
+              </tr>
+            <?php
+            }
+            ?>
+          </tbody>
+        </table>
+      </div>
     </div>
 
-    
-
     <script src="styles/adminMain.js"></script>
+    <script type="application/javascript">
+      function patientSearch() {
+        let input, filter, table, tr, td, txtValue;
+
+        //Intialising Variables
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("patientTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (let i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+
+      function doctorSearch() {
+        let input, filter, table, tr, td, txtValue;
+
+        //Intialising Variables
+        input = document.getElementById("myInput2");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("doctorTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (let i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 <?php 
 
+global $id;
 function check_login($con) {
     if(isset($_SESSION['user_id'])) {
         $id = $_SESSION['user_id'];

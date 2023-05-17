@@ -49,6 +49,7 @@
                         <span class="title">Doctor</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="manageAcc.php">
                         <span class="icon">
@@ -78,7 +79,7 @@
 
             <div class="search">
                 <label>
-                    <input type="text" placeholder="Search Doctor">
+                    <input type="text" placeholder="Search Doctor"  id="myInput2" onkeyup='docTableSearch()'>
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </label>
             </div>
@@ -88,9 +89,8 @@
             <div class="doctor">
                 <div class="cardHeader">
                     <h2>Doctor's Information</h2>
-                    <a href="#" class="btn">View All</a>
                 </div>
-                <table>
+                <table id="docTable">
                     <thead>
                         <th>Doctor ID</th>
                         <th>Fullname</th>
@@ -120,7 +120,7 @@
         </div>
     </div>
 
-    <script src="styles/adminMain.js"></script>
+    <script src="styles/adminMain.js" type="application/javascript"></script>
 </body>
 
 </html>
