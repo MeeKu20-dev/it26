@@ -643,7 +643,7 @@ input[type="radio"]{
           <div class="card">
             <div class="content">
               <div class="img">
-                <img src="aila.jpg" alt="">
+                <img src="images/aila.jpg" alt="">
               </div>
               <div class="details">
                 <div class="name">Aila Kye Hinlog</div>

@@ -19,7 +19,7 @@
 		if ($con->query($sql) === TRUE) {
 			echo "<script>alert('Patient Successfully Admitted...'); window.location.href = 'addRecords.php';</script>";
 		} else {
-			echo "Error: " . $sql . "<br>" . $conn->error;
+			echo "Error: " . $sql . "<br>" . $con->error;
 		}
 	}
 
